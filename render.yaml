@@ -2,6 +2,6 @@ services:
   - type: web
     name: modus-api
     env: python
-    buildCommand: ""
+    buildCommand: ./build.sh
     startCommand: python modus_backend.py
     plan: free
