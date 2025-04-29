@@ -15,11 +15,11 @@ WORKDIR /app
 # Copy all project files into container
 COPY . .
 
-# Install Python dependencies
+# Install Python dependencies and gunicorn
 RUN pip install --no-cache-dir -r requirements.txt gunicorn
 
-# Expose port 8080 (or any)
+# Expose port
 EXPOSE 8080
 
-# Start Gunicorn
+# Start the server using gunicorn, binding to the correct dynamic port
 CMD ["gunicorn", "-b", "0.0.0.0:${PORT:-8080}", "modus_backend:app"]
