@@ -18,8 +18,8 @@ COPY . .
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the port Flask runs on
-EXPOSE 5000
+# Expose dynamic port (optional)
+EXPOSE 8080
 
-# Start the Flask app
-CMD ["python", "modus_backend.py"]
+# Use the correct entrypoint to handle PORT
+CMD exec gunicorn --bind 0.0.0.0:${PORT:-5000} modus_backend:app
