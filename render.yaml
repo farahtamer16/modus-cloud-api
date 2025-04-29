@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: modus-api
+    env: python
+    buildCommand: ""
+    startCommand: python modus_backend.py
+    plan: free
