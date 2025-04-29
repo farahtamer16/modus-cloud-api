@@ -22,4 +22,4 @@ RUN pip install --no-cache-dir -r requirements.txt gunicorn
 EXPOSE 8080
 
 # Start the server using gunicorn, binding to the correct dynamic port
-CMD ["gunicorn", "-b", "0.0.0.0:${PORT:-8080}", "modus_backend:app"]
+CMD gunicorn -b 0.0.0.0:${PORT:-8080} modus_backend:app
