@@ -16,10 +16,10 @@ WORKDIR /app
 COPY . .
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt gunicorn
 
-# Expose dynamic port (optional)
+# Expose port 8080 (or any)
 EXPOSE 8080
 
-# Use the correct entrypoint to handle PORT
-CMD exec gunicorn --bind 0.0.0.0:${PORT:-5000} modus_backend:app
+# Start Gunicorn
+CMD ["gunicorn", "-b", "0.0.0.0:${PORT:-8080}", "modus_backend:app"]
